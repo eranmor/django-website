@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <img src = "{{ album.album_logo }}">
 
 <h1> {{ album.album_title }} </h1>
@@ -22,3 +23,18 @@
         <input typr="radio" id="song {{forloop.counter}}" name="song" value="{{ song.id }}">
     {% endfor %}
 </form>
+=======
+<img src="{{ album.album_logo }}">
+
+<h1> {{ album.album_title }}</h1>
+
+<h3>{{ album.artist }}</h3>
+
+<ul>
+    {% for song in album.song_set.all %}
+    <li>
+        {{ song.song_title }} - {{ song.file_type}}
+    </li>
+    {% endfor %}
+</ul>
+>>>>>>> 8d191e1489d6e4abc774597606cc43b0caa064d4

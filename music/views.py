@@ -19,16 +19,21 @@ def index(request):
 
 def detail(request, album_id):
 
-    # This was the response before connecting to the DB
-    # return HttpResponse("<h2>Details for album id: " + str(album_id) + "</h2>")
+    # Shortcut using get_object_or_404 package
 
-'''
+    album = get_object_or_404(Album, pk=album_id)
+    context = {'album': album}
+    return render(request, 'music/detail.html', context)
+
+# This was the response before connecting to the DB
+# return HttpResponse("<h2>Details for album id: " + str(album_id) + "</h2>")
+
+    '''
     try:
         album = Album.objects.get(pk=album_id)
         context = {'album': album}
     except Album.DoesNotExist:
         raise Http404("Sorry, album does not exist")
-'''
-# Shortcut using get_object_or_404 package
-    album = get_object_or_404(Album, pk=album_id)
-    return render(request, 'music/detail.html', context)
+    '''
+
+

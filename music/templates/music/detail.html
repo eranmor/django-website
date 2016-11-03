@@ -4,8 +4,21 @@
 
 <h3> {{ album.album_artis }} </h3>
 
+<!--
 <ul>
     {% for song in album.song_set.all %}
         <li> {{ song.song_title }} - {{ song.file_type }} </li>
     {% endfor %}
 </ul>
+-->
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'music:favorite' album.id %}" methon="post">
+    {% csrf_token %)
+    {% for song in album.song_set.all %}
+        <input typr="radio" id="song {{forloop.counter}}" name="song" value="{{ song.id }}">
+    {% endfor %}
+</form>
